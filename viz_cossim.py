@@ -72,7 +72,7 @@ def main():
     n_pairs = len(mean_pairs)
     fig, axes = plt.subplots(3, n_pairs, figsize=(4 * n_pairs, 11))
     fig.suptitle(
-        "Cosine Similarity Analysis",
+        "Cosine Similarity Analysis: V ~ N(μ, σ²)",
         fontsize=16,
         fontweight="bold",
         color="#E0E0E0",
@@ -98,8 +98,8 @@ def main():
                 markersize=6,
             )
 
-        ax.set_xlabel("Std")
-        ax.set_ylabel("Cosine Similarity Mean (± Std)")
+        ax.set_xlabel("Distribution σ")
+        ax.set_ylabel("Cosine Similarity (mean ± std)")
         ax.set_title(f"μ₁={mean1}, μ₂={mean2}", fontweight="bold", color="#FFD700")
         ax.invert_xaxis()
         ax.legend(loc="lower right", fontsize=7, ncol=1)
@@ -126,10 +126,10 @@ def main():
                 markersize=6,
             )
 
-        ax.set_xlabel("Std")
-        ax.set_ylabel("Positive Element Ratio (v1)")
+        ax.set_xlabel("Distribution σ")
+        ax.set_ylabel("Positive Element Ratio (V₁)")
         ax.set_title(
-            f"v1 Positive Element Ratio (μ₁={mean1})",
+            f"Positive Element Ratio (V₁: μ₁={mean1})",
             fontweight="bold",
             color="#4ECDC4",
         )
@@ -159,10 +159,10 @@ def main():
                 markersize=6,
             )
 
-        ax.set_xlabel("Std")
-        ax.set_ylabel("Positive Element Ratio (v2)")
+        ax.set_xlabel("Distribution σ")
+        ax.set_ylabel("Positive Element Ratio (V₂)")
         ax.set_title(
-            f"v2 Positive Element Ratio (μ₂={mean2})",
+            f"Positive Element Ratio (V₂: μ₂={mean2})",
             fontweight="bold",
             color="#FF6B6B",
         )
