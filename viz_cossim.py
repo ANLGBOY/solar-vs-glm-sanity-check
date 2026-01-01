@@ -72,7 +72,7 @@ def main():
     n_pairs = len(mean_pairs)
     fig, axes = plt.subplots(3, n_pairs, figsize=(4 * n_pairs, 11))
     fig.suptitle(
-        "Cosine Similarity Analysis: V ∈ ℝᵈ, Vᵢ ~ N(μᵢ, σ²)",
+        "Cosine Similarity Analysis: Vᵢ ∈ ℝᵈ, Vᵢ ~ N(μᵢ, σ²I)",
         fontsize=16,
         fontweight="bold",
         color="#E0E0E0",
@@ -98,7 +98,7 @@ def main():
                 markersize=6,
             )
 
-        ax.set_xlabel("σ (from Vᵢ ~ N(μᵢ, σ²))")
+        ax.set_xlabel("σ (from N(μᵢ, σ²I))")
         ax.set_ylabel("Cosine Similarity (mean ± std)")
         ax.set_title(f"μ₁={mean1}, μ₂={mean2}", fontweight="bold", color="#FFD700")
         ax.invert_xaxis()
@@ -126,7 +126,7 @@ def main():
                 markersize=6,
             )
 
-        ax.set_xlabel("σ (from Vᵢ ~ N(μᵢ, σ²))")
+        ax.set_xlabel("σ (from N(μᵢ, σ²I))")
         ax.set_ylabel("Positive Element Ratio (V₁)")
         ax.set_title(
             f"Positive Element Ratio (V₁: μ₁={mean1})",
@@ -159,7 +159,7 @@ def main():
                 markersize=6,
             )
 
-        ax.set_xlabel("σ (from Vᵢ ~ N(μᵢ, σ²))")
+        ax.set_xlabel("σ (from N(μᵢ, σ²I))")
         ax.set_ylabel("Positive Element Ratio (V₂)")
         ax.set_title(
             f"Positive Element Ratio (V₂: μ₂={mean2})",
