@@ -72,7 +72,7 @@ def main():
     n_pairs = len(mean_pairs)
     fig, axes = plt.subplots(3, n_pairs, figsize=(4 * n_pairs, 11))
     fig.suptitle(
-        "Cosine Similarity Analysis: V ∈ ℝᵈ, V ~ N(μ, σ²)",
+        "Cosine Similarity Analysis: V ∈ ℝᵈ, Vᵢ ~ i.i.d. N(μ, σ²)",
         fontsize=16,
         fontweight="bold",
         color="#E0E0E0",
