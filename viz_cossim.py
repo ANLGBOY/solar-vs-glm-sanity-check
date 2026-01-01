@@ -33,11 +33,11 @@ def generate_random_vectors_and_cossim(n_samples, dim, mean1, mean2, std):
 def main():
     os.makedirs("./viz_cossim", exist_ok=True)
 
-    dimensions = [64, 256, 1024, 4096]
+    dimensions = [64, 512, 4096]
     mean_pairs = [
         (0.1, 0.5),
-        (0.5, 0.5),
         (0.5, 1.0),
+        (1.0, 2.0),
     ]
     stds = [1.0, 0.75, 0.5, 0.25, 0.1]
     n_samples = 10000
@@ -95,14 +95,14 @@ def main():
                 label=f"d={dim}",
                 capsize=3,
                 linewidth=2,
-                markersize=8,
+                markersize=6,
             )
 
         ax.set_xlabel("Std")
         ax.set_ylabel("Cosine Similarity Mean (± Std)")
         ax.set_title(f"μ₁={mean1}, μ₂={mean2}", fontweight="bold", color="#FFD700")
         ax.invert_xaxis()
-        ax.legend(loc="lower right", fontsize=7, ncol=2)
+        ax.legend(loc="lower right", fontsize=7, ncol=1)
         ax.grid(True, alpha=0.3)
         ax.set_facecolor("#1a1a2e")
         ax.axhline(y=0, color="white", linestyle="--", alpha=0.3)
@@ -123,7 +123,7 @@ def main():
                 color=line_colors[i],
                 label=f"d={dim}",
                 linewidth=2,
-                markersize=8,
+                markersize=6,
             )
 
         ax.set_xlabel("Std")
@@ -136,7 +136,7 @@ def main():
         ax.invert_xaxis()
         ax.set_ylim(-0.05, 1.05)
         ax.axhline(y=0.5, color="white", linestyle="--", alpha=0.3)
-        ax.legend(loc="lower right", fontsize=7, ncol=2)
+        ax.legend(loc="lower right", fontsize=7, ncol=4)
         ax.grid(True, alpha=0.3)
         ax.set_facecolor("#1a1a2e")
 
@@ -156,7 +156,7 @@ def main():
                 color=line_colors[i],
                 label=f"d={dim}",
                 linewidth=2,
-                markersize=8,
+                markersize=6,
             )
 
         ax.set_xlabel("Std")
@@ -169,7 +169,7 @@ def main():
         ax.invert_xaxis()
         ax.set_ylim(-0.05, 1.05)
         ax.axhline(y=0.5, color="white", linestyle="--", alpha=0.3)
-        ax.legend(loc="lower right", fontsize=7, ncol=2)
+        ax.legend(loc="lower right", fontsize=7, ncol=4)
         ax.grid(True, alpha=0.3)
         ax.set_facecolor("#1a1a2e")
 
