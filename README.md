@@ -10,7 +10,7 @@
 |------|------|------|
 | Original | `cosine(A, B)` | 원본 유사도 |
 | Shuffled | `cosine(shuffle(A), shuffle(B))` | 순서 무관 baseline |
-| Centered | `cosine(A−μ, B−μ)` | 평균 제거 후 (= Pearson) |
+| Centered | `cosine(A−μ_A, B−μ_B)` | 평균 제거 후 |
 
 ## 실행
 
@@ -32,4 +32,4 @@ out_sanity/
 
 - **파란선**: cosine(A, B)
 - **빨간선**: cosine(shuffle(A), shuffle(B))
-- **초록선**: cosine(A−μ, B−μ)
+- **초록선**: cosine(A−μ_A, B−μ_B)

@@ -144,8 +144,8 @@ def fetch_tensor(key: str, header: Dict[str, Any], token: Optional[str]) -> np.n
 
 
 def cosine(a: np.ndarray, b: np.ndarray) -> float:
-    a = a.reshape(-1).astype(np.float64)
-    b = b.reshape(-1).astype(np.float64)
+    a = a.reshape(-1)
+    b = b.reshape(-1)
     na = np.linalg.norm(a)
     nb = np.linalg.norm(b)
     if na == 0.0 or nb == 0.0:
@@ -154,8 +154,8 @@ def cosine(a: np.ndarray, b: np.ndarray) -> float:
 
 
 def centered_cosine(a: np.ndarray, b: np.ndarray) -> float:
-    a = a.reshape(-1).astype(np.float64)
-    b = b.reshape(-1).astype(np.float64)
+    a = a.reshape(-1)
+    b = b.reshape(-1)
     a = a - a.mean()
     b = b - b.mean()
     na = np.linalg.norm(a)
@@ -167,8 +167,8 @@ def centered_cosine(a: np.ndarray, b: np.ndarray) -> float:
 
 def shuffled_cosine(a: np.ndarray, b: np.ndarray, seed: int = 42) -> float:
     rng = np.random.default_rng(seed)
-    a = a.reshape(-1).astype(np.float64)
-    b = b.reshape(-1).astype(np.float64)
+    a = a.reshape(-1)
+    b = b.reshape(-1)
     a_shuffled = rng.permutation(a)
     b_shuffled = rng.permutation(b)
     na = np.linalg.norm(a_shuffled)
@@ -353,7 +353,7 @@ def main():
                 print(
                     f"Layer {lb:3d} {cat:12s}: "
                     f"cos(A,B)={cos_ab:.4f}, cos(shuf(A),shuf(B))={cos_shuffled:.4f}, "
-                    f"centered={cos_centered:.4f}, A_μ={A.mean():.4f}, B_μ={B.mean():.4f}"
+                    f"centered={cos_centered:.4f}, μ_A={A.mean():.4f}, μ_B={B.mean():.4f}"
                 )
 
                 rows.append(
@@ -449,7 +449,7 @@ def main():
             markersize=3,
             linewidth=2,
             color=COLOR_CENTERED,
-            label="cosine(A−μ, B−μ)",
+            label=r"cosine(A−$\mu_A$, B−$\mu_B$)",
         )
         ax.axhline(y=0, color="#6b7280", linestyle=":", alpha=0.5)
         ax.set_xlabel("Layer Index", fontweight="medium")
@@ -504,7 +504,7 @@ def main():
         print(f"\n{cat}:")
         print(f"  Mean cosine(A, B):                      {cos_mean:.4f}")
         print(f"  Mean cosine(shuffle(A), shuffle(B)):    {shuf_mean:.4f}")
-        print(f"  Mean centered cosine (A−μ, B−μ):        {cent_mean:.4f}")
+        print(f"  Mean centered cosine (A−μ_A, B−μ_B):    {cent_mean:.4f}")
 
         if abs(cos_mean - shuf_mean) < 0.1:
             print(f"  [!] Original ~ Shuffled: cosine may be meaningless")
